@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Products | E-Commerce</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 30px;
+            background-color: #f8f9fa;
+        }
+        h1 {
+            color: #333;
+        }
+        .product-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        .product-card {
+            background-color: #fff;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 0 8px rgba(0,0,0,0.1);
+        }
+        .product-card h2 {
+            margin-top: 0;
+            font-size: 18px;
+        }
+        .product-card p {
+            font-size: 14px;
+            color: #666;
+        }
+        .wishlist-form {
+            margin-top: 10px;
+        }
+        .wishlist-button {
+            background-color: #007bff;
+            color: white;
+            padding: 6px 12px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .wishlist-button:hover {
+            background-color: #0056b3;
+        }
+        .wishlist-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            text-decoration: none;
+            background-color: #28a745;
+            color: white;
+            padding: 8px 14px;
+            border-radius: 5px;
+        }
+        .wishlist-link:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Available Products</h1>
+
+<a class="wishlist-link" th:href="@{/wishlist/view}">View Wishlist</a>
+
+<div class="product-list">
+    <div class="product-card" th:each="product : ${products}">
+        <h2 th:text="${product.name}">Product Name</h2>
+        <p th:text="${product.description}">Product description goes here...</p>
+        <p><strong>Price:</strong> ₹<span th:text="${product.price}">0.00</span></p>
+
+        <form class="wishlist-form" th:action="@{/wishlist/add}" method="post">
+            <input type="hidden" name="productId" th:value="${product.id}">
+            <input type="hidden" name="productName" th:value="${product.name}">
+            <input type="hidden" name="productDescription" th:value="${product.description}">
+            <input type="hidden" name="productPrice" th:value="${product.price}">
+            <button type="submit" class="wishlist-button">Add to Wishlist ❤️</button>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Wishlist</title>
+</head>
+<body>
+  <h2>Your Wishlist</h2>
+  <table border="1">
+    <tr>
+      <th>Product ID</th>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Price</th>
+      <th>Remove</th>
+    </tr>
+    <tr th:each="item : ${wishlist}">
+      <td th:text="${item.productId}"></td>
+      <td th:text="${item.productName}"></td>
+      <td th:text="${item.productDescription}"></td>
+      <td th:text="${item.productPrice}"></td>
+      <td>
+        <form th:action="@{'/wishlist/remove/' + ${item.id}}" method="post">
+          <input type="hidden" name="_method" value="delete">
+          <button type="submit">Remove</button>
+        </form>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>

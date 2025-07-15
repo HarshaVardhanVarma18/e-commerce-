@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>My E-Commerce Site</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(to right, #e0eafc, #cfdef3);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            text-align: center;
+        }
+
+        header {
+            background-color: #ffffffcc;
+            padding: 20px 0;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            color: #333;
+            font-size: 40px;
+            margin: 0;
+        }
+
+        .container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 60px 20px;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+
+        .button {
+            text-decoration: none;
+            background-color: #007bff;
+            color: white;
+            padding: 16px 28px;
+            border-radius: 10px;
+            font-size: 18px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            transition: 0.3s ease;
+        }
+
+        .button:hover {
+            background-color: #0056b3;
+        }
+
+        footer {
+            background-color: #f1f1f1;
+            padding: 15px 0;
+            font-size: 14px;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Welcome to the E-Commerce Store 🛍️</h1>
+</header>
+
+<div class="container">
+    <div class="buttons">
+        <a th:href="@{/products}" class="button">🛒 View Products</a>
+        <a th:href="@{/categories}" class="button">📂 View Categories</a>
+        <a th:href="@{/wishlist/view}" class="button">❤️ View Wishlist</a>
+    </div>
+</div>
+
+<footer>
+    &copy; 2025 My E-Commerce Site. All rights reserved.
+</footer>
+
+</body>
+</html>
